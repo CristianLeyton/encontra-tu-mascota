@@ -61,6 +61,7 @@ class UserResource extends Resource
                     ->label('Email')
                     ->email()
                     ->required()
+                    ->hiddenOn('edit')
                     ->validationMessages([
                         'required' => 'El campo email es obligatorio.',
                         'email' => 'El campo email debe ser una dirección de correo electrónico válida.',
@@ -70,6 +71,15 @@ class UserResource extends Resource
                     ->required()
                     ->hiddenOn('edit')
                     ->validationMessages(['required' => 'El campo contraseña es obligatorio.']),
+                TextInput::make('phone')
+                    ->label('Teléfono')
+                    ->maxLength(15)
+                    ->numeric()
+                    ->hiddenOn('edit')
+                    ->validationMessages([
+                        'numeric' => 'El campo teléfono debe ser un número válido.',
+                        'max_digits' => 'El campo teléfono no debe exceder los :max caracteres.'
+                    ]),
                 Toggle::make('is_admin')
                     ->label('Es administrador')
                     ->aboveLabel('Permisos de administrador')
@@ -83,12 +93,17 @@ class UserResource extends Resource
             ->recordTitleAttribute('User')
             ->columns([
                 TextColumn::make('name')
+                    ->label('Nombre')
                     ->searchable(),
                 TextColumn::make('email')
-                    ->label('Email address')
+                    ->label('Correo')
                     ->searchable()
+                    ->toggleable()
+                    ->visibleFrom('md'),
+                TextColumn::make('phone')
+                    ->label('Teléfono')
                     ->visibleFrom('md')
-                    ,
+                    ->toggleable(isToggledHiddenByDefault: true),
                 /*                 ToggleColumn::make('is_admin')
                     ->label('Es administrador')
                     ->disabled(fn(Model $record): bool => $record->id === 1)
@@ -96,11 +111,12 @@ class UserResource extends Resource
                 TextColumn::make('is_admin')
                     ->label('Es administrador')
                     ->alignCenter()
+                    ->toggleable()
                     ->formatStateUsing(fn($state) => $state ? 'Sí' : 'No')
                     ->badge()
                     ->color(fn($state) => $state ? 'success' : 'info')
                     ->sortable(),
-                    /* IconColumn::make('is_admin')
+                /* IconColumn::make('is_admin')
                     ->label('Es administrador')
                     ->alignCenter()
                     ->boolean()
@@ -109,7 +125,7 @@ class UserResource extends Resource
                     ->trueColor('success')
                     ->falseColor('warning')
                     ->sortable(), */
-/*                     ->extraAttributes([
+                /*                     ->extraAttributes([
                         'class' => 'flex justify-center',
                         'style' => 'display: flex; justify-content: center; align-items: center;',
                     ]), */

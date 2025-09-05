@@ -33,6 +33,7 @@ return [
     'notifications' => [
 
         'sent' => [
+            'title' => 'Correo electrónico enviado',
             'body' => 'Si su cuenta no existe, no recibirá el correo electrónico.',
         ],
 

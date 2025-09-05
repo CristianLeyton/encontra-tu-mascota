@@ -19,13 +19,14 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Filament\Pages\Auth\EditProfile;
 
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->profile(isSimple: false)
+            ->profile(isSimple:false, page: EditProfile::class)
             ->registration()
             ->passwordReset()
             ->emailVerification()
