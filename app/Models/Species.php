@@ -13,6 +13,6 @@ class Species extends Model
     protected $fillable = ['name', 'icon'];
     public function breeds()
     {
-        return $this->hasMany(Breeds::class);
+        return $this->hasMany(Breeds::class, 'species_id');
     }
 }

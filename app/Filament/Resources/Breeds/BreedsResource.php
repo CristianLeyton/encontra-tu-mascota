@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Species;
+namespace App\Filament\Resources\Breeds;
 
-use App\Filament\Resources\Species\Pages\ManageSpecies;
-use App\Models\Species;
+use App\Filament\Resources\Breeds\Pages\ManageBreeds;
+use App\Filament\Resources\Species\SpeciesResource;
+use App\Models\Breeds;
 use BackedEnum;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -13,29 +14,32 @@ use Filament\Actions\ForceDeleteAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreAction;
 use Filament\Actions\RestoreBulkAction;
-use Filament\Actions\ViewAction;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use UnitEnum;
 
-class SpeciesResource extends Resource
+class BreedsResource extends Resource
 {
-    protected static ?string $model = Species::class;
+    protected static ?string $model = Breeds::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocumentList;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedClipboardDocument;
 
-    protected static ?string $modelLabel = 'especie';
-    protected static ?string $pluralModelLabel = 'Especies';
+    protected static ?string $modelLabel = 'raza';
+    protected static ?string $pluralModelLabel = 'Razas';
     protected static bool $hasTitleCaseModelLabel = false;
     protected static string | UnitEnum | null $navigationGroup = 'Mascotas';
     protected static ?int $navigationSort = 0;
+    protected static ?string $navigationParentItem = 'Especies';
 
     protected static ?string $recordTitleAttribute = 'name';
 
@@ -55,13 +59,16 @@ class SpeciesResource extends Resource
                         'max' => 'El campo nombre no debe exceder los :max caracteres.',
                         'min' => 'El campo nombre debe tener al menos :min caracteres.',
                     ]),
-                TextInput::make('icon')
-                    ->label('Icono')
-                    ->minLength(1)
-                    ->maxLength(75)
+                Select::make('species_id')
+                    ->relationship('species', 'name')
+                    ->getOptionLabelFromRecordUsing(fn ($record) => $record->icon. ' ' . $record->name)
+                    ->label('Especie')
+                    ->required() 
+                    ->preload()
+                    ->native(false)
+                    ->loadingMessage('Cargando especies...')
                     ->validationMessages([
-                        'max' => 'El campo icono no debe exceder los :max caracteres.',
-                        'min' => 'El campo icono debe tener al menos :min caracteres.',
+                        'required' => 'El campo especie es obligatorio.',
                     ]),
             ]);
     }
@@ -73,12 +80,14 @@ class SpeciesResource extends Resource
             ->columns([
                 TextColumn::make('name')
                     ->label('Nombre')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('icon')
-                    ->label('Icono')
                     ->searchable()
-                    ->toggleable(),
+                    ->sortable(),
+                TextColumn::make('species_id')
+                    ->label('Especie')
+                    ->searchable()
+                    ->formatStateusing(fn($record) => $record->species->name . ' ' . $record->species->icon)
+                    ->toggleable()
+                    ->sortable(),
                 TextColumn::make('deleted_at')
                     ->label('Eliminado el')
                     ->dateTime()
@@ -97,11 +106,11 @@ class SpeciesResource extends Resource
             ])
             ->filters([
                 TrashedFilter::make(),
+                SelectFilter::make(
+                    'species_id' 
+                )->label('Especie')->relationship('species', 'name')
             ])
             ->recordActions([
-/*                 ViewAction::make()->button()->hiddenLabel()->extraAttributes([
-                    'title' => 'Ver',
-                ]), */
                 EditAction::make()->button()->hiddenLabel()->extraAttributes([
                     'title' => 'Editar',
                 ]),
@@ -127,7 +136,7 @@ class SpeciesResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => ManageSpecies::route('/'),
+            'index' => ManageBreeds::route('/'),
         ];
     }
 

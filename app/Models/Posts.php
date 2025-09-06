@@ -21,6 +21,11 @@ class Posts extends Model
     }
     public function breed()
     {
-        return $this->belongsTo(Breeds::class);
+        return $this->belongsTo(Breeds::class, 'breed_id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Images::class);
     }
 }
