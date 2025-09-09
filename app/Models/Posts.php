@@ -10,7 +10,7 @@ class Posts extends Model
 {
     //
     use SoftDeletes;
-    protected $fillable = ['is_published', 'is_missing', 'is_resolved', 'title', 'description', 'date', 'location', 'species_id', 'breed_id', 'color', 'size', 'name_contact', 'email_contact', 'phone_contact', 'user_id', 'slug'];
+    protected $fillable = ['is_published', 'is_missing', 'is_resolved', 'title', 'description', 'date', 'location', 'species_id', 'breed_id', 'color', 'size', 'name_contact', 'email_contact', 'phone_contact', 'user_id', 'slug', 'images'];
 
     public function user()
     {
@@ -42,4 +42,9 @@ class Posts extends Model
             $product->slug = Str::slug($product->title);
         });
     }
+
+    
+    protected $casts = [
+        'images' => 'array', 
+    ];
 }

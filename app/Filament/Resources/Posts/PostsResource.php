@@ -4,10 +4,12 @@ namespace App\Filament\Resources\Posts;
 
 use App\Filament\Resources\Posts\Pages\ManagePosts;
 use App\Models\Breeds;
+use App\Models\Images;
 use App\Models\Posts;
 use App\Models\Species;
 use App\Models\User;
 use BackedEnum;
+use DragonCode\PrettyArray\Services\File;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -18,12 +20,14 @@ use Filament\Actions\RestoreAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Infolists\Components\IconEntry;
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
@@ -36,6 +40,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use UnitEnum;
 
 
@@ -52,6 +57,7 @@ class PostsResource extends Resource
     protected static ?int $navigationSort = 1;
 
 
+
     protected static ?string $recordTitleAttribute = 'title';
 
     public static function form(Schema $schema): Schema
@@ -64,7 +70,9 @@ class PostsResource extends Resource
                     ->required()
                     ->maxLength(255)
                     ->minLength(3)
+                    ->unique()
                     ->validationMessages([
+                        'unique' => 'Ya existe una publicación con ese título',
                         'required' => 'Debes ingresar un título',
                         'min' => 'El título debe tener al menos :min caracteres',
                         'max' => 'El título no puede tener más de :max caracteres',
@@ -95,7 +103,6 @@ class PostsResource extends Resource
                 Textarea::make('description')
                     ->label('Descripción')
                     ->required()
-                    ->columnSpanFull()
                     ->maxLength(255)
                     ->minLength(3)
                     ->validationMessages([
@@ -104,6 +111,19 @@ class PostsResource extends Resource
                         'max' => 'El título no puede tener más de :max caracteres',
                     ])
                     ->helperText('Descripción larga de la mascota.'),
+                FileUpload::make('images')
+                    ->label('Imágenes')
+                    ->multiple()
+                    ->maxFiles(6)
+                    ->image()
+                    ->reorderable()
+                    ->appendFiles()
+                    ->panelLayout('grid')
+                    ->directory('posts/images')
+                    ->validationMessages([
+                        'image' => 'Debes seleccionar una imagen',
+                        'max' => 'Debes seleccionar :max imágenes',
+                    ]),
                 DatePicker::make('date')
                     ->label('Fecha')
                     ->required()
@@ -260,6 +280,13 @@ class PostsResource extends Resource
                             ->url(fn($record) => $record->location ? 'https://www.google.com/maps/search/' . urlencode($record->location) : null)
                             ->openUrlInNewTab()
                             ->hidden(fn($record) => empty($record->location)),
+                        ImageEntry::make('images')
+                            ->label('Imágenes')
+                            ->hidden(fn($record) => empty($record->images))
+                            ->url(fn($state) => Storage::url($state))
+                            ->openUrlInNewTab()
+                            ->columnSpanFull()
+                            ->imageSize(128)
                     ]),
 
 
