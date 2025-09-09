@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Posts extends Model
 {
     //
     use SoftDeletes;
-    protected $fillable = ['is_published', 'is_missing', 'is_resolved', 'title', 'description', 'date', 'location', 'species_id', 'breed_id', 'color', 'size', 'name_contact', 'email_contact', 'phone_contact', 'user_id'];
+    protected $fillable = ['is_published', 'is_missing', 'is_resolved', 'title', 'description', 'date', 'location', 'species_id', 'breed_id', 'color', 'size', 'name_contact', 'email_contact', 'phone_contact', 'user_id', 'slug'];
 
     public function user()
     {
@@ -27,5 +28,18 @@ class Posts extends Model
     public function images()
     {
         return $this->hasMany(Images::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($product) {
+            $product->slug = Str::slug($product->title);
+        });
+
+        static::updating(function ($product) {
+            $product->slug = Str::slug($product->title);
+        });
     }
 }

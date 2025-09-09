@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('is_missing')->default(true);
             $table->boolean('is_resolved')->default(false);
             $table->string('title');
+            $table->string('slug');
             $table->text('description');
             $table->date('date');
             $table->string('location');
