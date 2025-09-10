@@ -25,7 +25,7 @@ $user = Auth::user();
 
         <div id="navBar"
             class="hidden p-4 md:p-2 md:px-0 md:flex gap-1 md:gap-3 lg:gap-6 text-slate-600 *:hover:text-amber-700 bg-white w-full md:w-fit shadow-md rounded-xl md:shadow-none  top-16 left-0 text-left *:hover:bg-slate-100 *:p-2 *:rounded *:transition">
-            <a href="{{ url('/') }}" class="flex items-center gap-1.5">
+            <a href="{{ url('/') }}" class="flex items-center gap-1.5 {{ request()->is('/') ? 'text-amber-700' : 'text-gray-700' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-5">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -46,8 +46,9 @@ $user = Auth::user();
                     Publicar
                 </a>
             @endif
-            <a href="{{ url('/#precios') }}" class="flex items-center gap-1.5"> <svg xmlns="http://www.w3.org/2000/svg"
-                    width="24" height="24" viewBox="0 0 24 24" class="size-5"
+            <a href="{{ route('resolved') }}"
+                class="flex items-center gap-1.5 {{ request()->is('resueltos') ? 'text-amber-700' : 'text-gray-700' }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="size-5"
                     style="fill: currentColor;transform: ;msFilter:;">
                     <path
                         d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v5H4c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9c0-1.103-.897-2-2-2zM4 11h4v8H4v-8zm6-1V4h4v15h-4v-9zm10 9h-4V9h4v10z">

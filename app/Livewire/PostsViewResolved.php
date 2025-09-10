@@ -8,7 +8,7 @@ use App\Models\Breeds;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class PostsView extends Component
+class PostsViewResolved extends Component
 {
     use WithPagination;
 
@@ -43,9 +43,14 @@ class PostsView extends Component
 
     public function render()
     {
+        $postsResolved = Posts::query()->where('is_published', true)->where('is_resolved', true)->count();
+        $totalPosts = Posts::query()->where('is_published', true)->count();
+        $totalPostsUnresolvedMissed = Posts::query()->where('is_published', true)->where('is_resolved', false)->where('is_missing', true)->count();
+        $totalPostsUnresolvedFounded = Posts::query()->where('is_published', true)->where('is_resolved', false)->where('is_missing', false)->count();
+
         $query = Posts::query()
             ->where('is_published', true)
-            ->where('is_resolved', false)
+            ->where('is_resolved', true)
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
                     $q->where('title', 'like', '%' . $this->search . '%')
@@ -63,8 +68,12 @@ class PostsView extends Component
                 $query->where('location', 'like', '%' . $this->location . '%');
             });
 
-        return view('livewire.posts-view', [
+        return view('livewire.posts-view-resolved', [
             'posts' => $query->latest()->paginate(15),
+            'postsResolved' => $postsResolved,
+            'totalPosts' => $totalPosts,
+            'totalPostsUnresolvedMissed' => $totalPostsUnresolvedMissed,
+            'totalPostsUnresolvedFounded' => $totalPostsUnresolvedFounded,
         ]);
     }
 }

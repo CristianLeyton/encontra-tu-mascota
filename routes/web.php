@@ -5,11 +5,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    // Obtenemos los últimos 5 posts publicados para pasarlos a la vista.
-    $posts = Posts::where('is_published', true)->latest()->take(5)->get();
-
-    return view('welcome', ['posts' => $posts]);
+    return view('welcome');
 })->name('home');
+
+Route::get('/resueltos', function () {
+    return view('resolved');
+})->name('resolved');
 
 Route::post('/logout', function () {
     Auth::logout();
