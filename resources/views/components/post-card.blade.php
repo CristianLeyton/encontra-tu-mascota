@@ -169,7 +169,7 @@
                             <path d="M7 14.987v1.999h1.999l5.529-5.522-1.998-1.998zm8.47-4.465-1.998-2L14.995 7l2 1.999z">
                             </path>
                         </svg>
-                        Editar post
+                        Editar
                     </a>
                 @endif
             @endauth

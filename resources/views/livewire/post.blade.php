@@ -121,58 +121,120 @@
             <p class="text-gray-700 text-pretty">{{ $post->description }}</p>
         </div>
     @endif
+
     {{-- Datos de contacto --}}
     @if (!$post->is_resolved)
-        <p class="font-semibold text-gray-700">Datos de contacto: </p>
-        <div
-            class="grid md:grid-cols-2 align-items-center justify-items-center bg-white rounded-xl shadow-md px-4 py-3 border border-gray-100 text-gray-600 mb-4 gap-4">
+    <p class="font-semibold text-gray-700">Datos de contacto: </p>
+    <div class="grid gap-2 grid-cols-1 md:grid-cols-2">
+            <div
+                class="grid md:grid-cols-2 align-items-center justify-items-center bg-white rounded-xl shadow-md px-4 py-3 border border-gray-100 text-gray-600 gap-2">
 
-            <span class="flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                </svg>
-                {{ $post->name_contact ?? 'Anónimo' }}
-            </span>
-
-            <span class="flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
-                </svg>
-
-                {{ $post->created_at->format('d/m/Y') }}
-            </span>
-
-            @if ($post->email_contact)
-                <a href="mailto:{{ $post->email_contact }}" class="flex items-center gap-1.5 text-cyan-600"
-                    target="_blank">
+                <span class="flex items-center gap-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                    {{ $post->name_contact ?? 'Anónimo' }}
+                </span>
+
+                <span class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
                     </svg>
 
-                    {{ $post->email_contact }}
-                </a>
-            @endif
+                    {{ $post->created_at->format('d/m/Y') }}
+                </span>
 
-            @if ($post->phone_contact)
-                <a href="https://wa.me/{{ $post->phone_contact }}" class="flex items-center gap-1.5 text-lime-700"
-                    target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="size-6"
-                        viewBox="0 0 24 24" style="fill: currentColor;transform: ;msFilter:;">
+                @if ($post->email_contact)
+                    <a href="mailto:{{ $post->email_contact }}" class="flex items-center gap-1.5 text-cyan-600"
+                        target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                        </svg>
+
+                        {{ $post->email_contact }}
+                    </a>
+                @endif
+
+                @if ($post->phone_contact)
+                    <a href="https://wa.me/{{ $post->phone_contact }}"
+                        class="flex items-center gap-1.5 text-lime-700" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="size-6"
+                            viewBox="0 0 24 24" style="fill: currentColor;transform: ;msFilter:;">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263">
+                            </path>
+                        </svg>
+                        {{ $post->phone_contact }}
+                    </a>
+                @endif
+            </div>
+
+            {{-- Botones de compartir --}}
+            <div class="flex flex-wrap gap-1.5 items-center justify-center text-sm bg-white rounded-xl shadow-md px-4 py-3 border border-gray-100 text-gray-600">
+                <p class="font-semibold text-gray-700 text-base w-full">Compartir en:</p>
+                {{-- WhatsApp --}}
+                <a href="https://wa.me/?text={{ urlencode('Mascota perdida: ' . $post->title . ' - ' . route('post', $post)) }}"
+                    target="_blank"
+                    class="px-2 py-1 bg-green-500 hover:bg-green-600 text-white rounded-lg flex items-center gap-1 shadow-md"
+                    title="Compartir en WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        style="fill: currentColor;transform: ;msFilter:;" class="size-6">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263">
                         </path>
                     </svg>
-                    {{ $post->phone_contact }}
                 </a>
-            @endif
-        </div>
-        <div class="grid gap-2 grid-cols-1 md:grid-cols-2">
+
+                {{-- Facebook --}}
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(route('post', $post)) }}"
+                    target="_blank"
+                    class="px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center gap-1 shadow-md"
+                    title="Compartir en Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        style="fill: currentColor;transform: ;msFilter:;" class="size-6">
+                        <path
+                            d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z">
+                        </path>
+                    </svg>
+                </a>
+
+                {{-- Twitter/X --}}
+                <a href="https://twitter.com/intent/tweet?text={{ urlencode($post->title) }}&url={{ urlencode(route('post', $post)) }}"
+                    target="_blank"
+                    class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg flex items-center gap-2 shadow-md"
+                    title="Compartir en Twitter/X">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
+                        text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+                        clip-rule="evenodd" viewBox="0 0 512 462.799"
+                        style="fill: currentColor;transform: ;msFilter:;" class="size-4">
+                        <path fill-rule="nonzero"
+                            d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z" />
+                    </svg>
+                </a>
+
+                {{-- Copiar Link --}}
+                <div class="relative">
+                    <button title="Copiar enlace" type="button" id="copy-link-button"
+                        class="cursor-pointer px-2 py-1 bg-amber-500 hover:bg-amber-600 text-white rounded-lg flex items-center gap-2 shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                    </button>
+                    <div id="copy-tooltip"
+                        class="absolute hidden bg-gray-800 text-white text-xs rounded py-1 px-2 -top-10 left-1/2 -translate-x-1/2 transition-opacity duration-300">
+                        ¡Enlace copiado!
+                    </div>
+                </div>
+            </div>
             <div
                 class="flex col-span-full lg:col-span-1 items-center gap-3 bg-white rounded-xl shadow-md px-4 py-3 border border-gray-100">
                 <div class="p-2 rounded-lg bg-green-100 text-green-600 text-xl mt-1">
@@ -188,7 +250,8 @@
                     </p>
                 </div>
             </div>
-            <div class="flex col-span-full lg:col-span-1 items-center gap-3 bg-white rounded-xl shadow-md px-4 py-3 border border-gray-100">
+            <div
+                class="flex col-span-full lg:col-span-1 items-center gap-3 bg-white rounded-xl shadow-md px-4 py-3 border border-gray-100">
                 <div class="p-2 rounded-lg bg-red-100 text-red-600 text-xl mt-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -219,13 +282,16 @@
     @endif
 
     {{-- Botón volver --}}
-
     <div class="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-3 mt-6">
 
         <div class="w-full inline-flex items-center justify-center text-center">
             <a href="{{ route('unresolved') }}"
                 class="flex items-center gap-2 bg-gray-200 text-gray-800 rounded-lg px-3 py-1.5 hover:-translate-y-0.5 transition w-full sm:w-fit justify-center">
-                ← Volver a publicaciones
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+                Volver a publicaciones
             </a>
         </div>
 
@@ -241,7 +307,7 @@
                         <path d="M7 14.987v1.999h1.999l5.529-5.522-1.998-1.998zm8.47-4.465-1.998-2L14.995 7l2 1.999z">
                         </path>
                     </svg>
-                    Editar post
+                    Editar
                 </a>
             @endif
         @endauth
@@ -273,3 +339,27 @@
         @endif
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        function initializeCopyButton() {
+            const copyButton = document.getElementById('copy-link-button');
+            const tooltip = document.getElementById('copy-tooltip');
+
+            if (copyButton && !copyButton.dataset.initialized) {
+                copyButton.dataset.initialized = true;
+                copyButton.addEventListener('click', function() {
+                    const urlToCopy = '{{ route('post', $post) }}';
+
+                    navigator.clipboard.writeText(urlToCopy).then(() => {
+                        tooltip.classList.remove('hidden');
+                        setTimeout(() => tooltip.classList.add('hidden'), 2000);
+                    }).catch(err => console.error('Error al copiar el enlace: ', err));
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeCopyButton);
+        document.addEventListener('livewire:navigated', initializeCopyButton);
+    </script>
+@endpush

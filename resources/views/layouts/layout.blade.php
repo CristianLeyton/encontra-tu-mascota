@@ -10,6 +10,7 @@
     @stack('styles')
     @livewireScripts
     @livewireStyles
+    @yield('head')
 </head>
 <body class="p-4 container mx-auto">
     <header class="sticky top-4 z-50">

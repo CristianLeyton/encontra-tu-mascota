@@ -29,6 +29,7 @@ class Post extends Component
         }
     }
 
+
     public function reportPost()
     {
         // El dueño del post no puede reportarlo.
