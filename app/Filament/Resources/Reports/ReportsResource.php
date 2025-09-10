@@ -39,6 +39,12 @@ class ReportsResource extends Resource
     protected static string | UnitEnum | null $navigationGroup = 'Mascotas';
     protected static ?int $navigationSort = 2;
 
+    public static function getNavigationBadge(): ?string
+    {
+        return (string) Reports::all()->count();
+    }
+
+
     public static function form(Schema $schema): Schema
     {
         return $schema

@@ -20,3 +20,8 @@ Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('home');
 })->name('logout');
+
+
+Route::get('/publicaciones/{post}', function ($post) {
+    return view('post')->with('post', Posts::where('slug', $post)->first());
+})->name('post');

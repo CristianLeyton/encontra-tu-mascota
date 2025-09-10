@@ -43,12 +43,37 @@
     }
 }
 
-
 @font-face {
-    font-family: 'Iceberg';
-    src: url('/fonts/iceberg.ttf');
+    font-family: "Iceberg";
+    src: url("/fonts/iceberg.ttf");
 }
 
 .font-iceberg {
-    font-family: 'Iceberg', cursive;
+    font-family: "Iceberg", cursive;
+}
+
+.swiper-button-prev {
+    scale: 0.8;
+    color: #e17100;
+}
+
+.swiper-button-next {
+    scale: 0.8;
+    color: #e17100;
+}
+
+.swiper-button-next::after {
+    color: #e17100;
+}
+
+.swiper-button-prev::after {
+    color: #e17100;
+}
+
+.swiper-pagination-bullet-active {
+    background: #e17100 !important;
+}
+
+.swiper-pagination-bullet-active::after {
+    background: #e17100 !important;
 }

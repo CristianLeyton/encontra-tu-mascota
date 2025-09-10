@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreignId('breed_id')->nullable()->constrained()->onDelete('set null');
             $table->string('color')->nullable();
             $table->string('size')->nullable();
+            $table->text('images')->nullable();
             
             $table->string('name_contact')->nullable();
             $table->string('email_contact')->nullable();
