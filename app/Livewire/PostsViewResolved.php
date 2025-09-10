@@ -69,7 +69,7 @@ class PostsViewResolved extends Component
             });
 
         return view('livewire.posts-view-resolved', [
-            'posts' => $query->latest()->paginate(15),
+            'posts' => $query->latest()->paginate(12),
             'postsResolved' => $postsResolved,
             'totalPosts' => $totalPosts,
             'totalPostsUnresolvedMissed' => $totalPostsUnresolvedMissed,

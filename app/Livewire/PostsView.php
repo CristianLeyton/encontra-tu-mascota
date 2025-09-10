@@ -64,7 +64,7 @@ class PostsView extends Component
             });
 
         return view('livewire.posts-view', [
-            'posts' => $query->latest()->paginate(15),
+            'posts' => $query->latest()->paginate(12),
         ]);
     }
 }
