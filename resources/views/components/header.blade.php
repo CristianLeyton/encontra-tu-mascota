@@ -25,7 +25,7 @@ $user = Auth::user();
 
         <div id="navBar"
             class="hidden p-4 md:p-2 md:px-0 md:flex gap-1 md:gap-3 lg:gap-6 text-slate-600 *:hover:text-amber-700 bg-white w-full md:w-fit shadow-md rounded-xl md:shadow-none  top-16 left-0 text-left *:hover:bg-slate-100 *:p-2 *:rounded *:transition">
-            <a href="{{ url('/') }}" class="flex items-center gap-1.5 {{ request()->is('/') ? 'text-amber-700' : 'text-gray-700' }}">
+            <a href="{{ url('/publicaciones') }}" class="flex items-center gap-1.5 {{ request()->is('publicaciones') ? 'text-amber-700' : 'text-gray-700' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-5">
                     <path stroke-linecap="round" stroke-linejoin="round"

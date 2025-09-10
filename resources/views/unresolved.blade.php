@@ -4,7 +4,7 @@
 
 @extends('layouts.layout')
 
-@section('titulo', 'Mascotas encontradas')
+@section('titulo', 'Encontrá tu mascota')
 
 @section('contenido')
     @if (!$user)
@@ -12,5 +12,5 @@
             <a href="{{ url('/admin') }}" class="text-amber-600">Entrá a tu cuenta</a> para crear o editar publicaciones.
         </p>
     @endif
-    @livewire('posts-view-resolved')
+    @livewire('posts-view')
 @endsection

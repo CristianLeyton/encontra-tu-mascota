@@ -20,9 +20,10 @@ class ManagePosts extends ManageRecords
                 ->icon('heroicon-o-newspaper'),
             CreateAction::make()
                 ->icon('heroicon-o-plus')
+                ->createAnother(false)
                 ->after(function ($record, $data) {
                     // Esto hace que Laravel haga un redirect completo fuera de Filament
-                    return redirect()->away(url('/'));
+                    return redirect()->away(route('unresolved'));
                 })
         ];
     }

@@ -12,6 +12,10 @@ Route::get('/resueltos', function () {
     return view('resolved');
 })->name('resolved');
 
+Route::get('/publicaciones', function () {
+    return view('unresolved');
+})->name('unresolved');
+
 Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('home');

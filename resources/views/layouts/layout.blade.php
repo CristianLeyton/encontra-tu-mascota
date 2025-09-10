@@ -1,6 +1,3 @@
-@php
-    $user = Auth::user();
-@endphp
 
 <!DOCTYPE html>
 <html>
@@ -19,13 +16,7 @@
         @include('components.header')
     </header>
 
-    <main class="">
-
-        @if (!$user)
-            <p class="text-center text-slate-500 text-sm pt-4">
-                <a href="{{ url('/admin') }}" class="text-amber-600">Entrá a tu cuenta</a> para crear o editar publicaciones.
-            </p>
-        @endif
+    <main class="text-pretty">
         @yield('contenido') 
     </main>
 
