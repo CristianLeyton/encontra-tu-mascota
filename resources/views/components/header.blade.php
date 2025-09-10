@@ -26,7 +26,7 @@ $user = Auth::user();
         <div id="navBar"
             class="hidden p-4 md:p-2 md:px-0 md:flex gap-1 md:gap-3 lg:gap-6 text-slate-600 *:hover:text-amber-700 bg-white w-full md:w-fit shadow-md rounded-xl md:shadow-none  top-16 left-0 text-left *:hover:bg-slate-100 *:p-2 *:rounded *:transition">
 
-             @if ($user)
+            @if ($user)
                 <a href="{{ url('/admin/posts?action=create') }}" class="flex items-center gap-1.5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         style="fill: currentColor;transform: ;msFilter:;" class="size-5">
@@ -38,8 +38,9 @@ $user = Auth::user();
                     Publicar
                 </a>
             @endif
-            
-            <a href="{{ url('/publicaciones') }}" class="flex items-center gap-1.5 {{ request()->is('publicaciones') ? 'text-amber-700' : 'text-gray-700' }}">
+
+            <a href="{{ url('/publicaciones') }}"
+                class="flex items-center gap-1.5 {{ request()->is('publicaciones') ? 'text-amber-700' : 'text-gray-700' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-5">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -69,9 +70,7 @@ $user = Auth::user();
                         d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 </svg>
 
-                {{ $user ? $user->name : 'Iniciar sesión' }}
-
-
+                {{ $user ? explode(' ', $user->name)[0] : 'Ingresar' }}
             </a>
 
             @if ($user)
@@ -84,7 +83,7 @@ $user = Auth::user();
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
                         </svg>
-                        Cerrar sesión
+                        Salir
                     </button>
                 </form>
             @endif

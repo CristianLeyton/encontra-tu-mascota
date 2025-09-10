@@ -456,7 +456,7 @@ class PostsResource extends Resource
                     ->numeric()
                     ->sortable()
                     ->visibleFrom('md')
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('date')
                     ->label('Fecha')
                     ->date()
