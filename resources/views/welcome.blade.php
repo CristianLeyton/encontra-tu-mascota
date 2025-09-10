@@ -59,7 +59,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-sm font-semibold text-gray-700">Coordiná Encuentros Seguros</p>
+                        <p class="text-sm font-semibold text-gray-700">Coordiná encuentros seguros</p>
                         <p class="text-xs text-gray-500">
                             La plataforma es colaborativa; se recomienda reunirse en lugares públicos y seguros.
                         </p>
@@ -79,7 +79,7 @@
 
                     </div>
                     <div>
-                        <p class="text-sm font-semibold text-gray-700">Fotos Propias o Permitidas</p>
+                        <p class="text-sm font-semibold text-gray-700">Fotos propias o permitidas</p>
                         <p class="text-xs text-gray-500">
                             Solo subí fotos que sean tuyas o para las que tengas permiso.
                         </p>
@@ -96,7 +96,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-sm font-semibold text-gray-700">No Exponer Datos Sensibles</p>
+                        <p class="text-sm font-semibold text-gray-700">No exponer datos sensibles</p>
                         <p class="text-xs text-gray-500">
                             Evitá subir documentos, direcciones exactas o teléfonos de menores.
                         </p>

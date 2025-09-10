@@ -12,7 +12,7 @@
     @livewireStyles
 </head>
 <body class="p-4 container mx-auto">
-    <header>
+    <header class="sticky top-4 z-50">
         @include('components.header')
     </header>
 

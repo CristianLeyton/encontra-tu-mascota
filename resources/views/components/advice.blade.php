@@ -10,7 +10,7 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-sm font-semibold text-gray-700">Reporta Inmediatamente</p>
+                    <p class="text-sm font-semibold text-gray-700">Reporta inmediatamente</p>
                     <p class="text-xs text-gray-500">
                         Cuanto antes publiques, mayores son las posibilidades de reunir familias.
                     </p>
@@ -29,7 +29,7 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-sm font-semibold text-gray-700">Incluye Fotos Claras</p>
+                    <p class="text-sm font-semibold text-gray-700">Incluye fotos claras</p>
                     <p class="text-xs text-gray-500">
                         Las fotos ayudan a identificar rápidamente a tu mascota.
                     </p>
@@ -47,7 +47,7 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-sm font-semibold text-gray-700">Especifica la Zona</p>
+                    <p class="text-sm font-semibold text-gray-700">Especifica la zona</p>
                     <p class="text-xs text-gray-500">
                         Menciona calles, barrios o puntos de referencia cercanos. <span class="text-red-600 font-semibold">No coloques números de casas.</span>
                     </p>
@@ -64,7 +64,7 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-sm font-semibold text-gray-700">Mantén Actualizado</p>
+                    <p class="text-sm font-semibold text-gray-700">Mantén actualizado</p>
                     <p class="text-xs text-gray-500">
                         Actualiza tu publicación si encuentras nueva información.
                     </p>

@@ -25,16 +25,8 @@ $user = Auth::user();
 
         <div id="navBar"
             class="hidden p-4 md:p-2 md:px-0 md:flex gap-1 md:gap-3 lg:gap-6 text-slate-600 *:hover:text-amber-700 bg-white w-full md:w-fit shadow-md rounded-xl md:shadow-none  top-16 left-0 text-left *:hover:bg-slate-100 *:p-2 *:rounded *:transition">
-            <a href="{{ url('/publicaciones') }}" class="flex items-center gap-1.5 {{ request()->is('publicaciones') ? 'text-amber-700' : 'text-gray-700' }}">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-5">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
-                </svg>
-                Publicaciones
-            </a>
 
-            @if ($user)
+             @if ($user)
                 <a href="{{ url('/admin/posts?action=create') }}" class="flex items-center gap-1.5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         style="fill: currentColor;transform: ;msFilter:;" class="size-5">
@@ -46,6 +38,16 @@ $user = Auth::user();
                     Publicar
                 </a>
             @endif
+            
+            <a href="{{ url('/publicaciones') }}" class="flex items-center gap-1.5 {{ request()->is('publicaciones') ? 'text-amber-700' : 'text-gray-700' }}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+                </svg>
+                Publicaciones
+            </a>
+
             <a href="{{ route('resolved') }}"
                 class="flex items-center gap-1.5 {{ request()->is('resueltos') ? 'text-amber-700' : 'text-gray-700' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="size-5"
