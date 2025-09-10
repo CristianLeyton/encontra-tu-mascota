@@ -31,6 +31,11 @@ class Posts extends Model
         return $this->hasMany(Images::class);
     }
 
+    public function reports()
+    {
+        return $this->hasMany(Reports::class, 'post_id');
+    }
+
     protected static function boot()
     {
         parent::boot();
@@ -44,8 +49,8 @@ class Posts extends Model
         });
     }
 
-    
+
     protected $casts = [
-        'images' => 'array', 
+        'images' => 'array',
     ];
 }

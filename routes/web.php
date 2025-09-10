@@ -22,6 +22,6 @@ Route::post('/logout', function () {
 })->name('logout');
 
 
-Route::get('/publicaciones/{post}', function ($post) {
-    return view('post')->with('post', Posts::where('slug', $post)->first());
+Route::get('/publicaciones/{post:slug}', function (Posts $post) {
+    return view('post', compact('post'));
 })->name('post');

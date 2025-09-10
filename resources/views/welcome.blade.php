@@ -32,7 +32,7 @@
                     </a>
                 @endif
                 <a href="{{ route('unresolved') }}"
-                    class="bg-white border border-amber-600 text-amber-700 rounded-lg px-3 py-1.5 hover:-translate-y-0.5 transition flex items-center gap-1.5 w-full sm:w-fit justify-center">
+                    class="bg-white border border-amber-500 text-amber-600 rounded-lg px-3 py-1.5 hover:-translate-y-0.5 transition flex items-center gap-1.5 w-full sm:w-fit justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-5">
                         <path stroke-linecap="round" stroke-linejoin="round"

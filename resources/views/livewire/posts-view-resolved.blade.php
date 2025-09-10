@@ -1,6 +1,6 @@
 <div>
     {{-- Estadisticas --}}
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-2">
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-4">
 
         {{-- Total de publicaciones --}}
         <div class="flex items-center gap-3 bg-white rounded-xl shadow-md px-3 py-1.5 border border-gray-100">

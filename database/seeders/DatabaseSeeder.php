@@ -25,6 +25,15 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
+        User::factory()->create([
+            'id' => 2,
+            'name' => 'Usuario',
+            'email' => 'user@mail.com',
+            'password' => bcrypt('user'), 
+            'is_admin' => false,
+            'email_verified_at' => now(),
+        ]);
+
         Species::create([
             'name' => 'Perro',
             'icon' => '🐶',

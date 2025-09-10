@@ -2,10 +2,12 @@
 
 namespace App\Filament\Resources\Reports;
 
+use App\Filament\Resources\Posts\PostsResource;
 use App\Filament\Resources\Reports\Pages\ManageReports;
 use App\Models\Reports;
 use App\Models\User;
 use BackedEnum;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -73,7 +75,9 @@ class ReportsResource extends Resource
                 TextColumn::make('post.title')
                     ->label('Publicación')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->copyable()
+                    ->tooltip('Copiar título de la publicación'),
                 TextColumn::make('user.name')
                     ->label('Creado por')
                     ->sortable()
@@ -102,6 +106,14 @@ class ReportsResource extends Resource
                 /*                 EditAction::make()->button()->hiddenLabel()->extraAttributes([
                     'title' => 'Editar',
                 ]), */
+                Action::make('viewPost')
+                    ->label('Ver Publicación')
+                    ->tooltip('Ver la publicación en el panel')
+                    ->icon('heroicon-s-eye')
+                    ->color('gray')
+                    ->button()
+                    ->hiddenLabel()
+                    ->url(fn(Reports $record): string => PostsResource::getUrl('index') . '?tableAction=view&tableActionRecord=' . $record->post_id),
                 DeleteAction::make()->button()->hiddenLabel()->extraAttributes([
                     'title' => 'Eliminar',
                 ]),

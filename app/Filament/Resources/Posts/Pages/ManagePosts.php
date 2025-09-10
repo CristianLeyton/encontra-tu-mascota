@@ -15,7 +15,7 @@ class ManagePosts extends ManageRecords
     {
         return [
             Action::make('Ver publicaciones')
-                ->url('/')
+                ->url('/publicaciones')
                 ->label('Ver publicaciones')
                 ->icon('heroicon-o-newspaper'),
             CreateAction::make()

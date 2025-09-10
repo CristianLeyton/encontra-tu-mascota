@@ -2,7 +2,7 @@
     {{-- Consejos para publicar --}}
      @include('components.advice')
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 py-2">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 py-4">
 
         {{-- Panel de filtros lateral --}}
         <div

@@ -6,9 +6,12 @@ use App\Filament\Resources\Posts\Pages\ManagePosts;
 use App\Models\Breeds;
 use App\Models\Images;
 use App\Models\Posts;
+use App\Models\Reports;
 use App\Models\Species;
 use App\Models\User;
 use BackedEnum;
+use BladeUI\Icons\Components\Icon;
+use Dom\Text;
 use DragonCode\PrettyArray\Services\File;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
@@ -33,9 +36,13 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TrashedFilter;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -473,10 +480,23 @@ class PostsResource extends Resource
                     ->label('Resuelto')
                     ->color(fn($record) => $record->is_resolved ? 'success' : 'danger')
                     ->falseIcon('heroicon-o-no-symbol')
-                    ->trueIcon('heroicon-o-face-frown')
+                    ->trueIcon('heroicon-o-face-smile')
                     ->boolean()
                     ->toggleable()
-                    ->sortable(),
+                    ->sortable()
+                    ->alignCenter(),
+                TextColumn::make('reports_count')
+                    ->label('Reportes')
+                    ->badge()
+                    ->size('md')
+                    ->icon('heroicon-o-exclamation-triangle')
+                    ->colors([
+                        'success' => fn($state) => $state == 0,
+                        'danger' => fn($state) => $state > 0,
+                    ])
+                    ->sortable()
+                    ->toggleable()
+                    ->alignCenter(),
                 TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()
@@ -491,6 +511,21 @@ class PostsResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
+                SelectFilter::make('user')
+                    ->label('Usuario')
+                    ->relationship('user', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->visible(fn(): bool => Auth::user()->is_admin),
+                TernaryFilter::make('reported')
+                    ->label('Reportado')
+                    ->placeholder('Todos')
+                    ->trueLabel('Sí')
+                    ->falseLabel('No')
+                    ->queries(
+                        true: fn(Builder $query) => $query->has('reports'),
+                        false: fn(Builder $query) => $query->doesntHave('reports'),
+                    ),
                 TrashedFilter::make(),
             ])
             ->recordActions([
@@ -529,12 +564,13 @@ class PostsResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         $user = Auth::user();
+        $query = parent::getEloquentQuery()->withCount('reports');
 
         if ($user->is_admin) {
-            return parent::getEloquentQuery();
+            return $query;
         }
 
-        return parent::getEloquentQuery()->where('user_id', $user->id);
+        return $query->where('user_id', $user->id);
     }
 
     public static function getRecordRouteBindingEloquentQuery(): Builder

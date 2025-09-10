@@ -154,7 +154,7 @@
                     </path>
                     <path d="M6 7h12v2H6zm0 4h12v2H6zm0 4h6v2H6z"></path>
                 </svg>
-                Ver detalles
+                Ver publicación
             </a>
 
             @auth
