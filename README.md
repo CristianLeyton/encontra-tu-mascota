@@ -2,6 +2,9 @@
 
 **Encontrá Tu Mascota** es una aplicación web dedicada a la comunidad, diseñada para facilitar la búsqueda y el reencuentro de mascotas perdidas. Los usuarios pueden publicar avisos de mascotas que han perdido o encontrado, proporcionando detalles y fotos para ayudar a que vuelvan a casa sanas y salvas.  
 
+La idea fue propuesta por SaltaDev para la ciudad de Salta, Argentina.
+[Ver Propuesta](https://daffodil-bandicoot-bca.notion.site/mini-hackathon) - daffodil-bandicoot-bca.notion.site/mini-hackathon  
+
 [Ver Demo](https://encontratumascota.cdl.com.ar/) - encontratumascota.cdl.com.ar  
 
 ## ✨ Funcionalidades Principales
