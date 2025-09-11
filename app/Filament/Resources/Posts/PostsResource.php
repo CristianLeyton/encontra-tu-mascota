@@ -174,28 +174,36 @@ class PostsResource extends Resource
                             ->pluck('name', 'id');
                     })
                     ->disabled(fn(callable $get) => !$get('species_id'))
+                    ->createOptionForm(function (callable $get) {
+                        return [
+                            TextInput::make('name')
+                                ->label('Nombre de la raza')
+                                ->required()
+                                ->minLength(3)
+                                ->maxLength(255)
+                                ->unique(
+                                    table: Breeds::class,
+                                    column: 'name'
+                                )
+                                ->validationMessages([
+                                    'unique' => 'Ya existe una raza con ese nombre',
+                                    'required' => 'Debes ingresar un nombre de raza',
+                                    'max' => 'El nombre de la raza no puede tener más de :max caracteres',
+                                    'min' => 'El nombre de la raza debe tener al menos :min caracteres',
+                                ]),
+                        ];
+                    })
                     ->createOptionUsing(function (array $data, callable $get) {
                         $speciesId = $get('species_id');
                         if (!$speciesId) {
                             return null;
                         }
-                        return Breeds::create([
-                            'name' => $data['name'],
-                            'species_id' => $speciesId,
-                        ])->id;
+                        // Usamos firstOrCreate para evitar una condición de carrera si dos usuarios crean lo mismo a la vez.
+                        $breed = Breeds::firstOrCreate(
+                            ['name' => $data['name'], 'species_id' => $speciesId]
+                        );
+                        return $breed->id;
                     })
-                    ->createOptionForm([
-                        TextInput::make('name')
-                            ->label('Nombre de la raza')
-                            ->required()
-                            ->minLength(3)
-                            ->maxLength(255)
-                            ->validationMessages([
-                                'required' => 'Debes ingresar un nombre de raza',
-                                'max' => 'El nombre de la raza no puede tener más de :max caracteres',
-                                'min' => 'El nombre de la raza debe tener al menos :min caracteres',
-                            ]),
-                    ])
                     ->createOptionAction(function ($action) {
                         return $action->modalHeading('Crear nueva raza');
                     }),

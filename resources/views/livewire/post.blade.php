@@ -124,8 +124,8 @@
 
     {{-- Datos de contacto --}}
     @if (!$post->is_resolved)
-    <p class="font-semibold text-gray-700">Datos de contacto: </p>
-    <div class="grid gap-2 grid-cols-1 md:grid-cols-2">
+        <p class="font-semibold text-gray-700">Datos de contacto: </p>
+        <div class="grid gap-2 grid-cols-1 md:grid-cols-2">
             <div
                 class="grid md:grid-cols-2 align-items-center justify-items-center bg-white rounded-xl shadow-md px-4 py-3 border border-gray-100 text-gray-600 gap-2">
 
@@ -176,7 +176,8 @@
             </div>
 
             {{-- Botones de compartir --}}
-            <div class="flex flex-wrap gap-1.5 items-center justify-center text-sm bg-white rounded-xl shadow-md px-4 py-3 border border-gray-100 text-gray-600">
+            <div
+                class="flex flex-wrap gap-1.5 items-center justify-center text-sm bg-white rounded-xl shadow-md px-4 py-3 border border-gray-100 text-gray-600">
                 <p class="font-semibold text-gray-700 text-base w-full">Compartir en:</p>
                 {{-- WhatsApp --}}
                 <a href="https://wa.me/?text={{ urlencode('Mascota perdida: ' . $post->title . ' - ' . route('post', $post)) }}"
@@ -283,18 +284,6 @@
 
     {{-- Botón volver --}}
     <div class="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-3 mt-6">
-
-        <div class="w-full inline-flex items-center justify-center text-center">
-            <a href="{{ route('unresolved') }}"
-                class="flex items-center gap-2 bg-gray-200 text-gray-800 rounded-lg px-3 py-1.5 hover:-translate-y-0.5 transition w-full sm:w-fit justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="size-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                </svg>
-                Volver a publicaciones
-            </a>
-        </div>
-
         @auth
             @if ($post->user_id == auth()->user()->id)
                 <a href="/admin/posts?tableAction=edit&tableActionRecord={{ $post->id }}"
@@ -337,6 +326,17 @@
                 </button>
             @endif
         @endif
+
+        <div class="w-full inline-flex items-center justify-center text-center">
+            <a href="{{ route('unresolved') }}"
+                class="flex items-center gap-2 bg-gray-200 text-gray-800 rounded-lg px-3 py-1.5 hover:-translate-y-0.5 transition w-full sm:w-fit justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+                Volver a publicaciones
+            </a>
+        </div>
     </div>
 </div>
 
