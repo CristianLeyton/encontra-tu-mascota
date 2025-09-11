@@ -30,8 +30,9 @@
     @endphp
 
     @if (!empty($images) && isset($images[0]))
-        <img src="{{ asset('/storage_public/' . $images[0]) }}" alt="{{ $post->title }}"
+        <a href="{{ url('/publicaciones/' . $post->slug) }}"><img src="{{ asset('/storage_public/' . $images[0]) }}" alt="{{ $post->title }}"
             class="w-full aspect-video object-contain mt-4">
+        </a>
     @else
         {{-- Placeholder si no hay imágenes --}}
         <div class="aspect-video bg-gray-200 flex items-center justify-center text-gray-400">

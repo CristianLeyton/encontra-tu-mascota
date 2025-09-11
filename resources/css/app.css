@@ -45,11 +45,11 @@
 
 @font-face {
     font-family: "Iceberg";
-    src: url("/fonts/iceberg.ttf");
+    src: url("/storage_public/fonts/iceberg.ttf") format("truetype");
 }
 
 .font-iceberg {
-    font-family: "Iceberg", cursive;
+    font-family: "Iceberg", sans-serif, system-ui;
 }
 
 .swiper-button-prev {
