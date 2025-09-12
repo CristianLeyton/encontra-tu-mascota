@@ -9,7 +9,7 @@ $user = Auth::user();
 ?>
 
 <header id="header" class="bg-white shadow-md rounded-xl container mx-auto xl:max-w-6xl">
-    <nav class="flex justify-between items-center px-4 py-2 md:py-0 text-sm relative text-amber-600">
+    <nav class="flex justify-between items-center px-4 py-2 md:py-0 text-sm relative text-emerald-600">
         <a href="{{ url('/') }}" class="hover:-translate-y-0.5 transition">
             {{-- <img src="{{ asset('images/logo.png') }}" alt="logo" class="h-10 w-auto"> --}}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -24,7 +24,7 @@ $user = Auth::user();
         </a>
 
         <div id="navBar"
-            class="hidden p-4 md:p-2 md:px-0 md:flex gap-1 md:gap-3 lg:gap-6 text-slate-600 *:hover:text-amber-700 bg-white w-full md:w-fit shadow-md rounded-xl md:shadow-none  top-16 left-0 text-left *:hover:bg-slate-100 *:p-2 *:rounded *:transition">
+            class="hidden p-4 md:p-2 md:px-0 md:flex gap-1 md:gap-3 lg:gap-6 text-slate-600 *:hover:text-emerald-700 bg-white w-full md:w-fit shadow-md rounded-xl md:shadow-none  top-16 left-0 text-left *:hover:bg-slate-100 *:p-2 *:rounded *:transition">
 
             @if ($user)
                 <a href="{{ url('/admin/posts?action=create') }}" class="flex items-center gap-1.5">
@@ -40,7 +40,7 @@ $user = Auth::user();
             @endif
 
             <a href="{{ url('/publicaciones') }}"
-                class="flex items-center gap-1.5 {{ request()->is('publicaciones') ? 'text-amber-700' : 'text-gray-700' }}">
+                class="flex items-center gap-1.5 {{ request()->is('publicaciones') ? 'text-emerald-700' : 'text-gray-700' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-5">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -50,7 +50,7 @@ $user = Auth::user();
             </a>
 
             <a href="{{ route('resolved') }}"
-                class="flex items-center gap-1.5 {{ request()->is('resueltos') ? 'text-amber-700' : 'text-gray-700' }}">
+                class="flex items-center gap-1.5 {{ request()->is('resueltos') ? 'text-emerald-700' : 'text-gray-700' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="size-5"
                     style="fill: currentColor;transform: ;msFilter:;">
                     <path
@@ -62,7 +62,7 @@ $user = Auth::user();
         </div>
 
         <div class="flex gap-4 items-center">
-            <a class="bg-amber-600 text-white rounded-lg px-3 py-1.5 hover:-translate-y-0.5 transition flex items-center gap-1.5"
+            <a class="bg-emerald-600 text-xs md:text-sm font-semibold text-white rounded-lg px-3 py-1.5 hover:-translate-y-0.5 transition flex items-center gap-1.5"
                 href="{{ url('/admin') }}" title="Panel de administración">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="size-5">
@@ -77,7 +77,7 @@ $user = Auth::user();
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
                     <button title="Cerrar sesión" type="submit"
-                        class="text-amber-700 hover:underline cursor-pointer flex items-center gap-1.5 transition hover:bg-slate-100 rounded-lg p-1.5">
+                        class="text-emerald-700 text-xs md:text-sm hover:underline cursor-pointer flex items-center gap-1.5 transition hover:bg-slate-100 rounded-lg p-1.5 pr-2.5">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-5">
                             <path stroke-linecap="round" stroke-linejoin="round"
