@@ -41,6 +41,20 @@ class PostsViewResolved extends Component
         $this->breed_id = null; // Resetea la raza seleccionada
     }
 
+        public function resetFilters()
+    {
+        $this->resetPage();
+        $this->search = null;
+        $this->is_missing = null;
+        $this->species_id = null;
+        $this->breed_id = null;
+        $this->color = null;
+        $this->location = null;
+        $this->size = null;
+        $this->date_from = null;
+        $this->date_to = null;
+    }
+
     public function render()
     {
         $postsResolved = Posts::query()->where('is_published', true)->where('is_resolved', true)->count();

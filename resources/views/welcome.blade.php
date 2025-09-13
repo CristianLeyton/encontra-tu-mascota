@@ -6,7 +6,7 @@
 @section('titulo', 'Encontrá tu mascota')
 
 @section('contenido')
-    <div class="pt-24 pb-2 bg-emerald-100/70 fade-in-animation">
+    <section class="pt-24 pb-2 bg-emerald-100/70 fade-in-animation overflow-hidden">
         {{-- Hero principal --}}
         <div
             class="text-emerald-600 bg-emerald-100/90 hover:bg-emerald-200/50 rounded-full px-4 py-2 hover:-translate-y-0.5 transition flex items-center gap-1.5 w-fit mx-auto cursor-default font-semibold text-sm">
@@ -56,20 +56,9 @@
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="py-14 px-4 ">
-        {{-- Consejos / Información --}}
-        <p class="text-2xl md:text-3xl 2xl:text-4xl text-gray-800 font-bold text-center pb-5">Consejos para publicar</p>
-        <p class="text-center text-base md:text-lg 2xl:text-xl text-gray-500">Sigue estas recomendaciones para maximizar <br>
-            las posibilidades de encontrar a tu mascota</p>
-        {{-- Seguridad y Buenas Prácticas --}}
-        <div class="mt-6 container mx-auto max-w-7xl">
-            @include('components.advice')
-        </div>
-    </div>
-
-    <div class="py-14 px-4 bg-gray-50">
+    <section class="py-14 px-4">
         {{-- Como funciona --}}
         <p class="text-2xl md:text-3xl 2xl:text-4xl text-gray-800 font-bold text-center pb-5">¿Cómo funciona?</p>
         <p class="text-center text-base md:text-lg 2xl:text-xl text-gray-500">Tres simples pasos para ayudar a <br> reunir
@@ -77,7 +66,7 @@
 
         <div class="mt-6 container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3">
             <div class="flex flex-col justify-center text-center items-center gap-2  px-4 py-4 group transition">
-                <div class="p-4 rounded-full bg-gray-800 text-white text-xl group-hover:scale-110 transition duration-300">
+                <div class="p-4 rounded-full bg-emerald-800 text-white text-xl group-hover:scale-110 transition duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-8">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -96,7 +85,7 @@
 
             {{-- 2. Compartí --}}
             <div class="flex flex-col justify-center text-center items-center gap-2  px-4 py-4 group transition">
-                <div class="p-4 rounded-full bg-gray-800 text-white text-xl group-hover:scale-110 transition duration-300">
+                <div class="p-4 rounded-full bg-emerald-800 text-white text-xl group-hover:scale-110 transition duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-8">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -115,7 +104,7 @@
             {{-- 3. Reuní --}}
 
             <div class="flex flex-col justify-center text-center items-center gap-2  px-4 py-4 group transition">
-                <div class="p-4 rounded-full bg-gray-800 text-white text-xl group-hover:scale-110 transition duration-300">
+                <div class="p-4 rounded-full bg-emerald-800 text-white text-xl group-hover:scale-110 transition duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-8">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -130,9 +119,23 @@
 
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="py-14 pb-6 px-4">
+    <section class="py-14 px-4 bg-gray-50">
+        {{-- Consejos / Información --}}
+        <p class="text-2xl md:text-3xl 2xl:text-4xl text-gray-800 font-bold text-center pb-5">Consejos para publicar</p>
+        <p class="text-center text-base md:text-lg 2xl:text-xl text-gray-500">Sigue estas recomendaciones para maximizar
+            <br>
+            las posibilidades de encontrar a tu mascota</p>
+        {{-- Seguridad y Buenas Prácticas --}}
+        <div class="mt-6 container mx-auto max-w-7xl">
+            @include('components.advice')
+        </div>
+    </section>
+
+
+
+    <section class="py-14 pb-6 px-4">
         {{-- ¿Perdiste o encontraste una mascota? --}}
         <div
             class="bg-gradient-to-r from-emerald-200/70 to-emerald-50 text-white text-center py-12 px-6 rounded-xl flex flex-col gap-6  max-w-4xl mx-auto">
@@ -140,7 +143,7 @@
                 mascota?</p>
             <p class="text-center text-base md:text-lg 2xl:text-xl text-gray-700">No esperes más. Cada minuto cuenta cuando
                 se trata de reunir familias.
-                        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                 @if ($user)
                     <a href="{{ url('/admin/posts?action=create') }}"
                         class="bg-emerald-600 text-white rounded-lg px-3 py-1.5 hover:-translate-y-0.5 transition flex items-center font-semibold text-sm gap-1.5 w-full sm:w-fit justify-center">
@@ -165,6 +168,6 @@
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 
 @endsection

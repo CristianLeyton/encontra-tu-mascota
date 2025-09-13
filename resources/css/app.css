@@ -54,28 +54,28 @@
 
 .swiper-button-prev {
     scale: 0.8;
-    color: #e17100;
+    color: #009966;
 }
 
 .swiper-button-next {
     scale: 0.8;
-    color: #e17100;
+    color: #009966;
 }
 
 .swiper-button-next::after {
-    color: #e17100;
+    color: #009966;
 }
 
 .swiper-button-prev::after {
-    color: #e17100;
+    color: #009966;
 }
 
 .swiper-pagination-bullet-active {
-    background: #e17100 !important;
+    background: #009966 !important;
 }
 
 .swiper-pagination-bullet-active::after {
-    background: #e17100 !important;
+    background: #009966 !important;
 }
 
     .fade-in-animation div {

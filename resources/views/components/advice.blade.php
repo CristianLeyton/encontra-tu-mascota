@@ -20,8 +20,8 @@
                 </div>
 
                                                                 {{-- No datos sensibles --}}
-                <div class="flex col-span-full lg:col-span-3  items-center gap-3 bg-white rounded-xl shadow-md px-4 py-4 border border-gray-100 group transition duration-300 hover:-translate-y-1 hover:shadow-lg cursor-default">
-                    <div class="p-2 rounded-lg bg-red-100 text-red-600 text-xl mt-1 group-hover:bg-red-200/80 transition duration-300">
+                <div class="flex col-span-full lg:col-span-3 items-center gap-3 bg-white rounded-xl shadow-md px-4 py-4 border border-gray-100 group transition duration-300 hover:-translate-y-1 hover:shadow-lg cursor-default">
+                    <div class="p-2 rounded-lg bg-rose-100 text-rose-600 text-xl mt-1 group-hover:bg-rose-200/80 transition duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6 group-hover:scale-125 transition duration-300">
                             <path stroke-linecap="round" stroke-linejoin="round"

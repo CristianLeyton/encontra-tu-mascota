@@ -10,7 +10,7 @@ $user = Auth::user();
 
 <header id="header" class="bg-white shadow-md rounded-xl container mx-auto xl:max-w-6xl">
     <nav class="flex justify-between items-center px-4 py-2 md:py-0 text-sm relative text-emerald-600">
-        <a href="{{ url('/') }}" class="hover:-translate-y-0.5 transition">
+        <a href="{{ url('/') }}" class="hover:-translate-y-0.5 transition" title="Volver al inicio">
             {{-- <img src="{{ asset('images/logo.png') }}" alt="logo" class="h-10 w-auto"> --}}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 style="fill: currentColor;transform: ;msFilter:;" class="size-10">
