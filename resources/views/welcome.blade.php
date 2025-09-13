@@ -58,7 +58,7 @@
         </div>
     </section>
 
-    <section class="py-14 px-4">
+    <section class="py-14 px-4 bg-white">
         {{-- Como funciona --}}
         <p class="text-2xl md:text-3xl 2xl:text-4xl text-gray-800 font-bold text-center pb-5">¿Cómo funciona?</p>
         <p class="text-center text-base md:text-lg 2xl:text-xl text-gray-500">Tres simples pasos para ayudar a <br> reunir
@@ -135,7 +135,7 @@
 
 
 
-    <section class="py-14 pb-6 px-4">
+    <section class="py-14 pb-6 px-4 bg-white">
         {{-- ¿Perdiste o encontraste una mascota? --}}
         <div
             class="bg-gradient-to-r from-emerald-200/70 to-emerald-50 text-white text-center py-12 px-6 rounded-xl flex flex-col gap-6  max-w-4xl mx-auto">

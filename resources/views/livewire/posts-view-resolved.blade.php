@@ -1,8 +1,8 @@
 <div>
-    <div class="grid grid-cols-1 gap-4 p-4 container mx-auto mt-18">
+    <div class="grid grid-cols-1 gap-4 p-4 container mx-auto pt-22">
         {{-- Panel de filtros --}}
         <div
-            class="w-full col-span-full grid grid-cols-2 gap-4 p-4 rounded-xl shadow-md text-slate-600 h-fit text-xs border border-gray-100 ">
+            class="w-full col-span-full grid grid-cols-2 gap-4 p-4 rounded-xl shadow-md text-slate-600 h-fit text-xs border border-gray-100 bg-white">
 
             <div class="">
                 <label class="block mb-1 font-medium">Buscar por:</label>

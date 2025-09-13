@@ -71,8 +71,8 @@ class PostsView extends Component
             ->when($this->breed_id, fn($q) => $q->where('breed_id', $this->breed_id))
             ->when($this->color, fn($q) => $q->where('color', 'like', '%' . $this->color . '%'))
             ->when($this->size, fn($q) => $q->where('size', $this->size))
-            ->when($this->date_from, fn($q) => $q->whereDate('created_at', '>=', $this->date_from))
-            ->when($this->date_to, fn($q) => $q->whereDate('created_at', '<=', $this->date_to))
+            ->when($this->date_from, fn($q) => $q->whereDate('date', '>=', $this->date_from))
+            ->when($this->date_to, fn($q) => $q->whereDate('date', '<=', $this->date_to))
             ->when($this->location, function ($query) {
                 $query->where('location', 'like', '%' . $this->location . '%');
             });
