@@ -8,7 +8,7 @@ La idea fue propuesta por SaltaDev para la ciudad de Salta, Argentina.
 
 [Ver Propuesta](https://daffodil-bandicoot-bca.notion.site/mini-hackathon) - daffodil-bandicoot-bca.notion.site/mini-hackathon  
 
-[Ver Demo](https://encontratumascota.cdl.com.ar/) - encontratumascota.cdl.com.ar  
+[Ver Demo](https://mascotas.cdl.net.ar/) - mascotas.cdl.net.ar/
 
 ## ✨ Funcionalidades Principales
 
