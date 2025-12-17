@@ -1,5 +1,7 @@
 # Encontrá Tu Mascota
 
+<img width="1268" height="597" alt="image" src="https://github.com/user-attachments/assets/ac65923f-ccb6-49c3-a36c-c22d63b86100" />
+
 **Encontrá Tu Mascota** es una aplicación web dedicada a la comunidad, diseñada para facilitar la búsqueda y el reencuentro de mascotas perdidas. Los usuarios pueden publicar avisos de mascotas que han perdido o encontrado, proporcionando detalles y fotos para ayudar a que vuelvan a casa sanas y salvas.  
 
 La idea fue propuesta por SaltaDev para la ciudad de Salta, Argentina.  
@@ -12,12 +14,17 @@ La idea fue propuesta por SaltaDev para la ciudad de Salta, Argentina.
 
 ### Para Usuarios
 
+<img width="1361" height="653" alt="image" src="https://github.com/user-attachments/assets/0333791c-5950-4636-8996-359cbca3dce0" />
+
 * **Registro e Inicio de Sesión:** Crea una cuenta para empezar a publicar.  
 * **Publicar Avisos:** Crea publicaciones detalladas sobre mascotas perdidas o encontradas, incluyendo fotos, descripción, ubicación y fecha.  
 * **Ver Publicaciones:** Navega por todos los avisos publicados por otros usuarios (Incluso sin estar logueado).  
 * **Gestionar Publicaciones Propias:** Edita y elimina tus propias publicaciones desde un panel de usuario personal.  
 
 ### Para Administradores
+
+<img width="1344" height="688" alt="image" src="https://github.com/user-attachments/assets/78dfb68a-86d9-4701-911a-42c01e7e1c7f" />
+
 
 * **Panel de Administración Completo:** Acceso a un panel de control avanzado construido con Filament.  
 * **Gestión Total de Publicaciones:** Visualiza, edita, y elimina las publicaciones de todos los usuarios.  
