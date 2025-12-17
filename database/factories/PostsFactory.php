@@ -20,6 +20,8 @@ class PostsFactory extends Factory
     public function definition(): array
     {
         $sizes = ['muy pequeño', 'pequeño', 'mediano', 'grande', 'muy grande'];
+        $colors = ['rojo', 'verde', 'azul', 'naranja', 'amarillo', 'marrón', 'blanco'];
+        $boolean = [true, false];
 
         return [
             //
@@ -28,10 +30,11 @@ class PostsFactory extends Factory
             'location' => $this->faker->address(),
             'species_id' => Species::all()->random()->id,
             'breed_id' => null,
-            'color' => $this->faker->colorName(),
+            'color' => Arr::random($colors),
             'size' => Arr::random($sizes),
             'is_published' => true,
-            'is_resolved' => false,
+            'is_resolved' => Arr::random($boolean),
+            'is_missing' => Arr::random($boolean),
             'date' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'name_contact' => $this->faker->name(),
             'email_contact' => $this->faker->unique()->safeEmail(),
